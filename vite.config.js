@@ -6,7 +6,7 @@ const ogOptions = {
     url: 'https://backgroundears-erase.xyz',
     title: 'Backgroundears erase',
     type: 'image.png',
-    image: 'https://backgroundears-erase.xyz/og.png',
+    image: 'https://backgroundears-erase.xyz/openog.png',
     determiner: 'auto',
     description: 'Remove background in seconds',
     locale: 'es_ES',
@@ -14,7 +14,7 @@ const ogOptions = {
     siteName: 'Backgroundears erase',
   },
   twitter: {
-    image: 'https://backgroundears-erase.xyz/og.png',
+    image: 'https://backgroundears-erase.xyz/openog.png',
     imageAlt: 'twitter image alt',
   },
 };

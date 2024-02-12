@@ -9,7 +9,8 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "vite": "^5.0.12"
+    "vite": "^5.0.12",
+    "vite-plugin-open-graph": "^2.0.4"
   },
   "dependencies": {
     "@xenova/transformers": "^2.15.0"

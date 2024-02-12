@@ -9,8 +9,8 @@ const ogOptions = {
     image: 'https://backgroundears-erase.xyz/openog.png',
     determiner: 'auto',
     description: 'Remove background in seconds',
-    locale: 'es_ES',
-    localeAlternate: ['es_ES'],
+    locale: 'en_us',
+    localeAlternate: ['en_us'],
     siteName: 'Backgroundears erase',
   },
   twitter: {

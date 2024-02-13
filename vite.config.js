@@ -1,5 +1,7 @@
 import { defineConfig } from 'vite';
 import ogPlugin from 'vite-plugin-open-graph'
+import tailwindcss from 'tailwindcss' 
+import autoprefixer from 'autoprefixer'
 
 const ogOptions = {
   basic: {
@@ -21,6 +23,14 @@ const ogOptions = {
 
 export default defineConfig({
   plugins: [ogPlugin(ogOptions)],
+  css: {
+    postcss:{
+      plugins: [
+        tailwindcss,
+        autoprefixer
+      ]
+    }
+  },
   build: {
     target: 'esnext'
   }

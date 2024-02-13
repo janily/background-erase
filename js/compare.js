@@ -53,30 +53,41 @@ jQuery(document).ready(function($){
 
     //draggable funtionality - credits to http://css-tricks.com/snippets/jquery/draggable-without-jquery-ui/
     function drags(dragElement, resizeElement, container, labelContainer, labelResizeElement) {
-        dragElement.on("mousedown vmousedown", function(e) {
+        dragElement.on("mousedown vmousedown touchstart", function(e) {
+            if (e.type === 'touchstart') {
+                e = e.originalEvent.touches[0];
+            }
+    
             dragElement.addClass('draggable');
             resizeElement.addClass('resizable');
-
+    
             var dragWidth = dragElement.outerWidth(),
                 xPosition = dragElement.offset().left + dragWidth - e.pageX,
                 containerOffset = container.offset().left,
                 containerWidth = container.outerWidth(),
                 minLeft = containerOffset + 10,
                 maxLeft = containerOffset + containerWidth - dragWidth - 10;
-            
-            dragElement.parents().on("mousemove vmousemove", function(e) {
-                if( !dragging) {
-                    dragging =  true;
-                    ( !window.requestAnimationFrame )
-                        ? setTimeout(function(){animateDraggedHandle(e, xPosition, dragWidth, minLeft, maxLeft, containerOffset, containerWidth, resizeElement, labelContainer, labelResizeElement);}, 100)
-                        : requestAnimationFrame(function(){animateDraggedHandle(e, xPosition, dragWidth, minLeft, maxLeft, containerOffset, containerWidth, resizeElement, labelContainer, labelResizeElement);});
+    
+            dragElement.parents().on("mousemove vmousemove touchmove", function(e) {
+                if (e.type === 'touchmove') {
+                    e = e.originalEvent.touches[0];
                 }
-            }).on("mouseup vmouseup", function(e){
+    
+                if (!dragging) {
+                    dragging = true;
+                    (!window.requestAnimationFrame)
+                        ? setTimeout(function () { animateDraggedHandle(e, xPosition, dragWidth, minLeft, maxLeft, containerOffset, containerWidth, resizeElement, labelContainer, labelResizeElement); }, 100)
+                        : requestAnimationFrame(function () { animateDraggedHandle(e, xPosition, dragWidth, minLeft, maxLeft, containerOffset, containerWidth, resizeElement, labelContainer, labelResizeElement); });
+                }
+            }).on("mouseup vmouseup touchend", function (e) {
+                if (e.type === 'touchend') {
+                    e = e.originalEvent.changedTouches[0];
+                }
                 dragElement.removeClass('draggable');
                 resizeElement.removeClass('resizable');
             });
-            e.preventDefault();
-        }).on("mouseup vmouseup", function(e) {
+            e.stopPropagation();
+        }).on("mouseup vmouseup touchend", function (e) {
             dragElement.removeClass('draggable');
             resizeElement.removeClass('resizable');
         });

@@ -5,10 +5,10 @@ import autoprefixer from 'autoprefixer'
 
 const ogOptions = {
   basic: {
-    url: 'https://backgroundears-erase.xyz',
+    url: 'https://background-erase.xyz/',
     title: 'Backgroundears erase',
     type: 'image.png',
-    image: 'https://backgroundears-erase.xyz/openog.png',
+    image: 'https://background-erase.xyz/openog.png',
     determiner: 'auto',
     description: 'Remove background in seconds',
     locale: 'en_us',
@@ -16,7 +16,7 @@ const ogOptions = {
     siteName: 'Backgroundears erase',
   },
   twitter: {
-    image: 'https://backgroundears-erase.xyz/openog.png',
+    image: 'https://background-erase.xyz/openog.png',
     imageAlt: 'twitter image alt',
   },
 };

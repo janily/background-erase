@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import ogPlugin from 'vite-plugin-open-graph'
 import tailwindcss from 'tailwindcss' 
 import autoprefixer from 'autoprefixer'
+import wasm from "vite-plugin-wasm";
 
 const ogOptions = {
   basic: {
@@ -22,7 +23,7 @@ const ogOptions = {
 };
 
 export default defineConfig({
-  plugins: [ogPlugin(ogOptions)],
+  plugins: [ogPlugin(ogOptions), wasm()],
   css: {
     postcss:{
       plugins: [

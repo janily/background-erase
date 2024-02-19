@@ -4,11 +4,11 @@ import { AutoModel, AutoProcessor, env, RawImage } from '@xenova/transformers';
 
 // Since we will download the model from the Hugging Face Hub, we can skip the local model check
 env.allowLocalModels = false;
-const wasmPath = '/models/ort-wasm-simd.wasm';
-const absoluteWasmPath = new URL(wasmPath, location.origin).href;
-env.backends.onnx.wasm.wasmPaths = {
-    'ort-wasm-simd.wasm': absoluteWasmPath,
-}
+// const wasmPath = '/models/ort-wasm-simd.wasm';
+// const absoluteWasmPath = new URL(wasmPath, location.origin).href;
+// env.backends.onnx.wasm.wasmPaths = {
+//     'ort-wasm-simd.wasm': absoluteWasmPath,
+// }
 // Proxy the WASM backend to prevent the UI from freezing
 env.backends.onnx.wasm.proxy = true;
 // Constants

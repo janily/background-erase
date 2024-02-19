@@ -35,7 +35,7 @@ const ogOptions = {
 };
 
 export default defineConfig({
-  plugins: [ogPlugin(ogOptions), wasmContentTypePlugin, wasm()],
+  plugins: [ogPlugin(ogOptions), wasm()],
   css: {
     postcss:{
       plugins: [

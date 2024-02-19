@@ -4,6 +4,18 @@ import tailwindcss from 'tailwindcss'
 import autoprefixer from 'autoprefixer'
 import wasm from "vite-plugin-wasm";
 
+const wasmContentTypePlugin = {
+  name: "wasm-content-type-plugin",
+  configureServer(server) {
+    server.middlewares.use((req, res, next) => {
+      if (req.url.endsWith(".wasm")) {
+        res.setHeader("Content-Type", "application/wasm");
+      }
+      next();
+    });
+  },
+};
+
 const ogOptions = {
   basic: {
     url: 'https://background-erase.xyz/',
@@ -23,7 +35,7 @@ const ogOptions = {
 };
 
 export default defineConfig({
-  plugins: [ogPlugin(ogOptions), wasm()],
+  plugins: [ogPlugin(ogOptions), wasmContentTypePlugin, wasm()],
   css: {
     postcss:{
       plugins: [

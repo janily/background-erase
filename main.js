@@ -21,6 +21,7 @@ const imageContainer = document.getElementById('container');
 const example = document.getElementById('example');
 const statusWrap = document.getElementById('status-wrap');
 const downloadButton = document.querySelector('#downloadBtn');
+const downloadWrap = document.querySelector('.block-wrap');
 
 // Load model and processor
 status.textContent = 'Loading model...';
@@ -69,7 +70,7 @@ fileUpload.addEventListener('change', function (e) {
 });
 
 // 获取新添加的元素引用
-const comparisonContainer = document.getElementById('comparison');
+const comparisonContainer = document.getElementById('image-comparison-slider');
 const originalImage = document.getElementById('original-image');
 const modifiedImage = document.getElementById('modified-image');
 
@@ -137,7 +138,7 @@ async function predict(url) {
     showComparison(url, dataUrl);
     status.textContent = 'Done!';
     statusWrap.style.display = 'none';
-
+    downloadWrap.style.display = 'block';
      // 设置下载按钮的 href 属性为图片的数据 URL
     downloadButton.href = dataUrl;
     downloadButton.download = 'modifined.png'; // 设置下载的文件名

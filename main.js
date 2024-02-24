@@ -70,7 +70,7 @@ fileUpload.addEventListener('change', function (e) {
 });
 
 // 获取新添加的元素引用
-const comparisonContainer = document.getElementById('image-comparison-slider');
+const comparisonContainer = document.getElementById('image-slider');
 const originalImage = document.getElementById('original-image');
 const modifiedImage = document.getElementById('modified-image');
 

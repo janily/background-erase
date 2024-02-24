@@ -72,41 +72,46 @@
         <label id="status" class="absolute top-2/4 left-1/2 text-x tracking-tight text-white -translate-y-2/4 -translate-x-2/4"></label>
       </div>
       <!-- 添加新的图片对比结构 -->
-      <!-- <figure id="comparison" class="cd-image-container" style="display: none;">
-        <img id="original-image" src="" alt="Original Image">
-        <span class="cd-image-label" data-type="original">Original</span>
-        <div class="cd-resize-img">
-          <img id="modified-image" src="" alt="Modified Image">
-          <span class="cd-image-label flex items-center " data-type="modified">
-            <span>Modified</span>
-            <a href="javascript:void(0)" id="downloadBtn" class="dark:bg-gray-2 border-transparent border rounded-md inline-flex items-center justify-center py-3 px-7 text-center text-white hover:bg-gray-4 dark:hover:bg-dark-3 disabled:bg-gray-3 disabled:border-gray-3 disabled:text-dark-5"
-            >
-            <span class="pr-[10px] text-white">
-              <svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 18">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 1v11m0 0 4-4m-4 4L4 8m11 4v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3"/>
-            </svg>
-            </span>
-            Download
-          </a></span>
-        </div>
-        <span class="cd-handle"></span>
-      </figure> -->
-      <div id="image-comparison-slider" style="display: none;">
-        <img id="original-image" src="" alt="before">
-        <div class="img-wrapper">
-          <img id="modified-image"  src="" alt="after">
-        </div>
-        <span class="label label-before">Before</span>
-        <span class="label label-after">After</span>
-        <div class="handle">
-          <div class="handle-line"></div>
-          <div class="handle-circle">
-            <i class="fas fa-chevron-left"></i>
-            <i class="fas fa-chevron-right"></i>
+      <section id="image-slider"  class="image-comparison border-4 border-secondary rounded-2xl md:rounded-4xl" data-component="image-comparison-slider" style="display: none;">
+        <div class="checkerboard w-full h-full absolute top-0 left-0"></div>
+        <div class="image-comparison__slider-wrapper">
+          <label for="image-comparison-range" class="image-comparison__label">Move image comparison slider</label>
+          <input type="range" min="0" max="100" value="50" class="image-comparison__range" id="image-compare-range" data-image-comparison-range="">
+      
+          <div class="image-comparison__image-wrapper  image-comparison__image-wrapper--overlay" data-image-comparison-overlay="">
+            <figure class="image-comparison__figure image-comparison__figure--overlay">
+              <picture class="image-comparison__picture">
+                <img id="original-image" src="" alt="Mojave desert in the sun" class="image-comparison__image">
+              </picture>
+      
+              <figcaption class="image-comparison__caption image-comparison__caption--before">
+                <span class="image-comparison__caption-body">Before Label</span>
+              </figcaption>
+            </figure>
           </div>
-          <div class="handle-line"></div>
+      
+          <div class="image-comparison__slider" data-image-comparison-slider="">
+            <span class="image-comparison__thumb" data-image-comparison-thumb="">
+              <svg class="image-comparison__thumb-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="10" viewBox="0 0 18 10" fill="currentColor">
+                <path class="image-comparison__thumb-icon--left" d="M12.121 4.703V.488c0-.302.384-.454.609-.24l4.42 4.214a.33.33 0 0 1 0 .481l-4.42 4.214c-.225.215-.609.063-.609-.24V4.703z"></path>
+                <path class="image-comparison__thumb-icon--right" d="M5.879 4.703V.488c0-.302-.384-.454-.609-.24L.85 4.462a.33.33 0 0 0 0 .481l4.42 4.214c.225.215.609.063.609-.24V4.703z"></path>
+              </svg>
+            </span>
+          </div>
+      
+          <div class="image-comparison__image-wrapper">
+            <figure class="image-comparison__figure">
+              <picture class="image-comparison__picture">
+                <img id="modified-image" src="" alt="Mojave desert in the dark" class="image-comparison__image">
+              </picture>
+      
+              <figcaption class="image-comparison__caption image-comparison__caption--after">
+                <span class="image-comparison__caption-body">After Label</span>
+              </figcaption>
+            </figure>
+          </div>
         </div>
-      </div>
+      </section>
       <div class="block-wrap">
         <a href="javascript:void(0)" id="downloadBtn" class="w-36 text-gray-900 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 me-2 mb-2"
         >
@@ -190,7 +195,7 @@ class="mt-16 pt-6 pb-2 flex flex-col items-center bg-black text-sm text-gray-400
 </footer>
 </div>
   <script type="module" src="/main.js"></script>
-  <script type="module" src="./js/imgCompare.js"></script>
+  <script type="module" src="./js/imgSlider.js"></script>
 </body>
 
 </html>

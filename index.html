@@ -10,6 +10,7 @@
   <title>background-erase.xyz,Instant AI-Powered Background Removal with RMBG V1.4 - Fast, Efficient, and Free!</title>
   <meta name="keywords" content="RMBG-v1.4,background erase,AI background removal,AI transparent background maker,Automatic image background eraser">
   <link rel="stylesheet" href="./output.css">
+  <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/css/all.css" rel="stylesheet">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-HMRRBFQE4S"></script>
   <script>
@@ -44,11 +45,11 @@
     <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
       <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
     </div>
-    <div class="mx-auto max-w-5xl py-16 sm:py-48 lg:py-16">
-      <div class="text-center">
+    <div class="w-full flex flex-col py-16 sm:py-48 lg:py-16">
+      <div class="text-center mb-6">
         <h1 class="text-xl font-bold tracking-tight text-gray-900 sm:text-6xl">Remove background in seconds.</h1>
       </div>
-      <div class="relative">
+      <div class="relative container-wrap">
       <div id="container" class="mx-auto flex flex-col items-center justify-center">
         <label id="upload-button" for="upload" class="flex flex-col items-center justify-center">
           <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
@@ -59,7 +60,7 @@
         </label>
         <input id="upload" type="file" accept="image/*" />
       </div>
-      <div id="status-wrap" class="absolute top-0 right-0 bottom-0 left-0 bg-black bg-opacity-50 rounded-md">
+      <div id="status-wrap" class="absolute max-w-5xl top-0 right-0 bottom-0 left-0 bg-black bg-opacity-50 rounded-md">
         <!-- <div class="absolute w-1/2 top-2/4 left-1/2 -translate-y-2/4 -translate-x-2/4 rounded-md bg-neutral-200 dark:bg-neutral-600">
           <div
             id="progressBar"
@@ -71,7 +72,7 @@
         <label id="status" class="absolute top-2/4 left-1/2 text-x tracking-tight text-white -translate-y-2/4 -translate-x-2/4"></label>
       </div>
       <!-- 添加新的图片对比结构 -->
-      <figure id="comparison" class="cd-image-container" style="display: none;">
+      <!-- <figure id="comparison" class="cd-image-container" style="display: none;">
         <img id="original-image" src="" alt="Original Image">
         <span class="cd-image-label" data-type="original">Original</span>
         <div class="cd-resize-img">
@@ -89,7 +90,34 @@
           </a></span>
         </div>
         <span class="cd-handle"></span>
-      </figure>
+      </figure> -->
+      <div id="image-comparison-slider" style="display: none;">
+        <img id="original-image" src="" alt="before">
+        <div class="img-wrapper">
+          <img id="modified-image"  src="" alt="after">
+        </div>
+        <span class="label label-before">Before</span>
+        <span class="label label-after">After</span>
+        <div class="handle">
+          <div class="handle-line"></div>
+          <div class="handle-circle">
+            <i class="fas fa-chevron-left"></i>
+            <i class="fas fa-chevron-right"></i>
+          </div>
+          <div class="handle-line"></div>
+        </div>
+      </div>
+      <div class="block-wrap">
+        <a href="javascript:void(0)" id="downloadBtn" class="w-36 text-gray-900 bg-gray-100 hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 me-2 mb-2"
+        >
+        <span class="pr-[10px] text-[#626890]">
+          <svg class="w-3 h-3 text-[#626890] dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 18">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 1v11m0 0 4-4m-4 4L4 8m11 4v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3"/>
+        </svg>
+        </span>
+        Download
+      </a>
+      </div>
       </div>
     </div>
     <section id="about" class="mx-auto max-w-5xl bg-white dark:bg-gray-900">
@@ -161,9 +189,8 @@ class="mt-16 pt-6 pb-2 flex flex-col items-center bg-black text-sm text-gray-400
 </div>
 </footer>
 </div>
-  <script type="module" src="/js/jquery-3.7.1.min.js"></script>
-  <script type="module" src="/js/compare.js"></script>
   <script type="module" src="/main.js"></script>
+  <script type="module" src="./js/imgCompare.js"></script>
 </body>
 
 </html>

@@ -17,7 +17,6 @@
     "vite-plugin-wasm": "^3.3.0"
   },
   "dependencies": {
-    "@xenova/transformers": "^2.15.0",
-    "vite-plugin-top-level-await": "^1.4.1"
+    "@xenova/transformers": "^2.15.0"
   }
 }

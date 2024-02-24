@@ -3,7 +3,6 @@ import ogPlugin from 'vite-plugin-open-graph'
 import tailwindcss from 'tailwindcss' 
 import autoprefixer from 'autoprefixer'
 import wasm from "vite-plugin-wasm";
-import topLevelAwait from "vite-plugin-top-level-await";
 
 const wasmContentTypePlugin = {
   name: "wasm-content-type-plugin",
@@ -36,13 +35,12 @@ const ogOptions = {
 };
 
 export default defineConfig({
-  plugins: [ogPlugin(ogOptions), wasmContentTypePlugin, wasm(), topLevelAwait(),],
+  plugins: [ogPlugin(ogOptions), wasmContentTypePlugin, wasm()],
   worker: {
     // Not needed with vite-plugin-top-level-await >= 1.3.0
     // format: "es",
     plugins: [
-      wasm(),
-      topLevelAwait()
+      wasm()
     ]
   },
   css: {

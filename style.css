@@ -51,11 +51,11 @@ h4 {
   border: 2px dashed #D1D5DB;
   border-radius: 0.75rem;
   overflow: hidden;
-  background-size: 100% 100%;
   background-position: center;
   background-repeat: no-repeat;
   margin-left:auto;
   margin-right: auto;
+  background-size: contain !important;
 }
 
 #upload-button {

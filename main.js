@@ -22,6 +22,7 @@ const example = document.getElementById('example');
 const statusWrap = document.getElementById('status-wrap');
 const downloadButton = document.querySelector('#downloadBtn');
 const downloadWrap = document.querySelector('.block-wrap');
+const uploadAgainButton = document.getElementById('uploadAgain');
 
 // Load model and processor
 status.textContent = 'Loading model...';
@@ -61,6 +62,8 @@ fileUpload.addEventListener('change', function (e) {
         return;
     }
 
+    comparisonContainer.style.display = 'none';
+
     const reader = new FileReader();
 
     // Set up a callback when the file is loaded
@@ -68,6 +71,27 @@ fileUpload.addEventListener('change', function (e) {
 
     reader.readAsDataURL(file);
 });
+
+uploadAgainButton.addEventListener('change', function (e) {
+    const file = e.target.files[0];
+    if (!file) {
+        return;
+    }
+    imageContainer.style.display = 'block';
+    comparisonContainer.style.display = 'none';
+    downloadWrap.style.display = 'none';
+    const reader = new FileReader();
+
+    // Set up a callback when the file is loaded
+    reader.onload = async e2 => {
+        const url = e2.target.result;
+        // Continue with the prediction
+        await predict(url);
+    };
+
+    reader.readAsDataURL(file);
+});
+
 
 // 获取新添加的元素引用
 const comparisonContainer = document.getElementById('image-slider');
@@ -142,4 +166,22 @@ async function predict(url) {
      // 设置下载按钮的 href 属性为图片的数据 URL
     downloadButton.href = dataUrl;
     downloadButton.download = 'modifined.png'; // 设置下载的文件名
+}
+
+async function updateUI(url) {
+    // Read image
+    const image = await RawImage.fromURL(url);
+
+    // Update UI
+    imageContainer.innerHTML = '';
+    imageContainer.style.backgroundImage = `url(${url})`;
+
+    // Set container width and height depending on the image aspect ratio
+    const ar = image.width / image.height;
+    const [cw, ch] = (ar > 720 / 480) ? [720, 720 / ar] : [480 * ar, 480];
+    imageContainer.style.width = `${cw}px`;
+    imageContainer.style.height = `${ch}px`;
+
+    status.textContent = 'Analysing...';
+    statusWrap.style.display = 'block';
 }
